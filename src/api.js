@@ -1,6 +1,4 @@
-const API_BASE_URL =
-    import.meta.env.VITE_API_URL ||
-    "https://serviconnect-backend-flum.onrender.com";
+const API_BASE_URL = "https://serviconnect-backend-flum.onrender.com";
 
 export async function getServices() {
     const response = await fetch(`${API_BASE_URL}/api/services`);
@@ -24,11 +22,7 @@ export async function registerUser(userData) {
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(
-            typeof data === "string"
-                ? data
-                : data?.message || "Registration failed"
-        );
+        throw new Error(data?.message || data || "Registration failed");
     }
 
     return data;
@@ -46,11 +40,7 @@ export async function loginUser(credentials) {
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(
-            typeof data === "string"
-                ? data
-                : data?.message || "Login failed"
-        );
+        throw new Error(data?.message || data || "Login failed");
     }
 
     return data;
