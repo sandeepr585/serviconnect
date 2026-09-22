@@ -2,6 +2,44 @@ import { useEffect, useState } from "react";
 import ServiceCard from "../components/ServiceCard";
 import { getServices } from "../api";
 
+const SERVICE_IMAGES = {
+    "Plumbing Service":
+        "https://loremflickr.com/800/500/plumber?lock=1",
+
+    "Electrical Service":
+        "https://loremflickr.com/800/500/electrician?lock=2",
+
+    "Home Cleaning":
+        "https://loremflickr.com/800/500/house,cleaning?lock=3",
+
+    "AC Repair":
+        "https://loremflickr.com/800/500/airconditioner,repair?lock=4",
+
+    "Painting Service":
+        "https://loremflickr.com/800/500/house,painter?lock=5",
+
+    "Carpentry Service":
+        "https://loremflickr.com/800/500/carpenter,woodwork?lock=6",
+
+    "Beauty Service":
+        "https://loremflickr.com/800/500/beauty,salon?lock=7",
+
+    "Pest Control":
+        "https://loremflickr.com/800/500/pestcontrol?lock=8",
+
+    "Washing Machine Repair":
+        "https://loremflickr.com/800/500/washingmachine,repair?lock=9",
+
+    "Refrigerator Repair":
+        "https://loremflickr.com/800/500/refrigerator,repair?lock=10",
+
+    "Bathroom Cleaning":
+        "https://loremflickr.com/800/500/bathroom,cleaning?lock=11",
+
+    "AC Installation":
+        "https://loremflickr.com/800/500/airconditioner,installation?lock=12",
+};
+
 function Services() {
     const [services, setServices] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -24,10 +62,15 @@ function Services() {
         return (
             <div className="services-page">
                 <div className="services-header">
-                    <h1>Our Services</h1>
+                    <span className="services-label">
+                        ServiConnect Services
+                    </span>
+
+                    <h1>Services for your everyday needs</h1>
+
                     <p>
-                        Find trusted professionals for your home
-                        and personal needs.
+                        Book trusted professionals for home repair,
+                        cleaning, beauty and wellness services.
                     </p>
                 </div>
 
@@ -42,10 +85,15 @@ function Services() {
         return (
             <div className="services-page">
                 <div className="services-header">
-                    <h1>Our Services</h1>
+                    <span className="services-label">
+                        ServiConnect Services
+                    </span>
+
+                    <h1>Services for your everyday needs</h1>
+
                     <p>
-                        Find trusted professionals for your home
-                        and personal needs.
+                        Book trusted professionals for home repair,
+                        cleaning, beauty and wellness services.
                     </p>
                 </div>
 
@@ -63,9 +111,7 @@ function Services() {
                     ServiConnect Services
                 </span>
 
-                <h1>
-                    Services for your everyday needs
-                </h1>
+                <h1>Services for your everyday needs</h1>
 
                 <p>
                     Book trusted professionals for home repair,
@@ -78,7 +124,10 @@ function Services() {
                     <ServiceCard
                         key={service.id}
                         id={service.id}
-                        image={service.image}
+                        image={
+                            SERVICE_IMAGES[service.title] ||
+                            "https://loremflickr.com/800/500/home,service?lock=20"
+                        }
                         title={service.title}
                         description={service.description}
                         price={service.price}
