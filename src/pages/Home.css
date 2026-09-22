@@ -3005,3 +3005,1079 @@ input:focus-visible {
         scroll-behavior: auto !important;
     }
 }
+
+
+/* =========================================================
+   EXTRA PREMIUM HOME ANIMATIONS
+   Paste at the bottom of Home.css
+========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. WHOLE PAGE AMBIENT BACKGROUND
+--------------------------------------------------------- */
+
+.home-page {
+    position: relative;
+    isolation: isolate;
+}
+
+.home-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(37, 99, 235, 0.035),
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 90% 30%,
+            rgba(124, 58, 237, 0.035),
+            transparent 22%
+        ),
+        radial-gradient(
+            circle at 45% 90%,
+            rgba(16, 185, 129, 0.025),
+            transparent 20%
+        );
+}
+
+
+/* ---------------------------------------------------------
+   2. HERO PREMIUM LIGHT SWEEP
+--------------------------------------------------------- */
+
+.home-hero::after {
+    content: "";
+
+    position: absolute;
+    top: -30%;
+    left: -30%;
+
+    width: 45%;
+    height: 160%;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.22),
+            transparent
+        );
+
+    transform: rotate(18deg);
+
+    animation:
+        heroLightSweep 8s ease-in-out infinite;
+}
+
+@keyframes heroLightSweep {
+    0% {
+        transform:
+            translateX(-100%)
+            rotate(18deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    45% {
+        opacity: 0.75;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    100% {
+        transform:
+            translateX(360%)
+            rotate(18deg);
+        opacity: 0;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   3. HERO TITLE MORE DYNAMIC
+--------------------------------------------------------- */
+
+.hero-copy h1 {
+    text-shadow:
+        0 10px 35px rgba(15, 23, 42, 0.06);
+}
+
+.hero-copy h1 span {
+    position: relative;
+}
+
+.hero-copy h1 span::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -7px;
+
+    height: 3px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #7c3aed,
+            #06b6d4
+        );
+
+    transform-origin: left;
+
+    animation:
+        titleUnderline 1.4s 0.8s ease both;
+}
+
+@keyframes titleUnderline {
+    from {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scaleX(1);
+        opacity: 0.85;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   4. HERO SEARCH SHIMMER
+--------------------------------------------------------- */
+
+.hero-search::before {
+    content: "";
+
+    position: absolute;
+    inset: -1px;
+
+    border-radius: 18px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 25%,
+            rgba(37,99,235,0.14),
+            transparent 65%
+        );
+
+    background-size: 220% 100%;
+
+    animation:
+        searchBorderMove 4.5s linear infinite;
+
+    z-index: -1;
+}
+
+@keyframes searchBorderMove {
+    from {
+        background-position: 200% 0;
+    }
+
+    to {
+        background-position: -20% 0;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   5. SEARCH BUTTON SHINE
+--------------------------------------------------------- */
+
+.hero-search-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-search-button::before,
+.ai-open-button::before,
+.ai-demo-action::before,
+.cta-content button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    transform: skewX(-20deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.22),
+            transparent
+        );
+
+    transition:
+        left 0.65s ease;
+}
+
+.hero-search-button:hover::before,
+.ai-open-button:hover::before,
+.ai-demo-action:hover::before,
+.cta-content button:hover::before {
+    left: 140%;
+}
+
+
+/* ---------------------------------------------------------
+   6. QUICK SEARCH CHIPS POP
+--------------------------------------------------------- */
+
+.quick-search-row button {
+    position: relative;
+    overflow: hidden;
+}
+
+.quick-search-row button::after {
+    content: "";
+
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    left: 50%;
+    top: 50%;
+
+    background: rgba(37,99,235,0.22);
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    transition:
+        transform 0.45s ease;
+}
+
+.quick-search-row button:hover::after {
+    transform:
+        translate(-50%, -50%)
+        scale(18);
+}
+
+
+/* ---------------------------------------------------------
+   7. HERO IMAGE KEN BURNS
+--------------------------------------------------------- */
+
+.hero-image-frame img {
+    animation:
+        heroImageZoom 14s ease-in-out infinite alternate;
+}
+
+@keyframes heroImageZoom {
+    from {
+        transform: scale(1.03);
+    }
+
+    to {
+        transform: scale(1.085);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   8. HERO IMAGE COLOR SHIFT
+--------------------------------------------------------- */
+
+.hero-image-shade {
+    transition:
+        opacity 0.6s ease;
+}
+
+.hero-image-frame:hover .hero-image-shade {
+    opacity: 0.72;
+}
+
+
+/* ---------------------------------------------------------
+   9. HERO LOCATION PILL BREATHING
+--------------------------------------------------------- */
+
+.hero-location-pill {
+    animation:
+        locationFloat 4.5s ease-in-out infinite;
+}
+
+@keyframes locationFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   10. FLOATING CARD GLASS GLOW
+--------------------------------------------------------- */
+
+.hero-booking-card,
+.hero-rating-card,
+.hero-mini-card {
+    overflow: hidden;
+}
+
+.hero-booking-card::before,
+.hero-rating-card::before,
+.hero-mini-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: -40%;
+    left: -50%;
+
+    width: 60%;
+    height: 180%;
+
+    transform: rotate(20deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.32),
+            transparent
+        );
+
+    animation:
+        floatGlass 6s ease-in-out infinite;
+}
+
+@keyframes floatGlass {
+    0%,
+    100% {
+        left: -55%;
+    }
+
+    45%,
+    60% {
+        left: 120%;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   11. TRUST AVATARS ORBIT FEEL
+--------------------------------------------------------- */
+
+.trust-avatars {
+    animation:
+        trustGroup 5s ease-in-out infinite;
+}
+
+@keyframes trustGroup {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(3px);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   12. TRUST STRIP ICON BOUNCE
+--------------------------------------------------------- */
+
+.trust-strip-icon {
+    animation:
+        iconBreath 3.5s ease-in-out infinite;
+}
+
+@keyframes iconBreath {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   13. SECTION HEADINGS
+--------------------------------------------------------- */
+
+.section-heading-row h2,
+.section-heading-centered h2 {
+    position: relative;
+}
+
+.section-heading-row h2::after,
+.section-heading-centered h2::after {
+    content: "";
+
+    display: block;
+
+    width: 54px;
+    height: 4px;
+
+    margin-top: 17px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    transform-origin: left;
+
+    animation:
+        sectionUnderline 1s ease both;
+}
+
+@keyframes sectionUnderline {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   14. CATEGORY CARD SPOTLIGHT
+--------------------------------------------------------- */
+
+.home-category-card {
+    overflow: hidden;
+}
+
+.home-category-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    right: -80px;
+    bottom: -85px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.75),
+            transparent 70%
+        );
+
+    transition:
+        transform 0.5s ease;
+}
+
+.home-category-card:hover::after {
+    transform:
+        scale(1.7)
+        translate(-20px, -20px);
+}
+
+
+/* ---------------------------------------------------------
+   15. CATEGORY CARD ICON PULSE
+--------------------------------------------------------- */
+
+.home-category-card:hover .category-icon {
+    animation:
+        categoryIconPop 0.45s ease;
+}
+
+@keyframes categoryIconPop {
+    0% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform:
+            scale(1.16)
+            rotate(-7deg);
+    }
+
+    100% {
+        transform:
+            scale(1.08)
+            rotate(-5deg);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   16. SERVICE CARD HOVER DEPTH
+--------------------------------------------------------- */
+
+.home-service-item {
+    perspective: 1200px;
+}
+
+.home-service-item > * {
+    transform:
+        translateZ(0);
+
+    transition:
+        transform 0.4s cubic-bezier(.2,.8,.2,1);
+}
+
+.home-service-item:hover > * {
+    transform:
+        translateY(-10px)
+        rotateX(1deg);
+}
+
+
+/* ---------------------------------------------------------
+   17. SERVICE GRID LIGHT SWEEP
+--------------------------------------------------------- */
+
+.services-preview {
+    overflow: hidden;
+}
+
+.services-preview::before {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    left: -120px;
+    top: 30%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(37,99,235,0.07),
+            transparent 70%
+        );
+
+    animation:
+        serviceAmbient 7s ease-in-out infinite;
+}
+
+@keyframes serviceAmbient {
+    0%,
+    100% {
+        transform:
+            translate3d(0,0,0);
+    }
+
+    50% {
+        transform:
+            translate3d(80px,-25px,0);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   18. AI SECTION AURORA
+--------------------------------------------------------- */
+
+.ai-home-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.ai-home-section::before,
+.ai-home-section::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.ai-home-section::before {
+    width: 280px;
+    height: 280px;
+
+    right: -100px;
+    top: -80px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(37,99,235,0.11),
+            transparent 70%
+        );
+
+    animation:
+        aiOrb 8s ease-in-out infinite;
+}
+
+.ai-home-section::after {
+    width: 220px;
+    height: 220px;
+
+    left: -90px;
+    bottom: -90px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(124,58,237,0.08),
+            transparent 70%
+        );
+
+    animation:
+        aiOrb 10s -2s ease-in-out infinite;
+}
+
+@keyframes aiOrb {
+    0%,
+    100% {
+        transform: translate3d(0,0,0);
+    }
+
+    50% {
+        transform:
+            translate3d(20px,-25px,0);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   19. AI WINDOW BORDER GLOW
+--------------------------------------------------------- */
+
+.ai-demo-window {
+    position: relative;
+}
+
+.ai-demo-window::before {
+    content: "";
+
+    position: absolute;
+    inset: -1px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #2563eb,
+            transparent 35%,
+            #7c3aed,
+            transparent 75%
+        );
+
+    background-size: 220% 220%;
+
+    animation:
+        aiBorderFlow 6s linear infinite;
+
+    z-index: -1;
+}
+
+@keyframes aiBorderFlow {
+    0% {
+        background-position:
+            0% 50%;
+    }
+
+    50% {
+        background-position:
+            100% 50%;
+    }
+
+    100% {
+        background-position:
+            0% 50%;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   20. AI WINDOW DOTS
+--------------------------------------------------------- */
+
+.ai-window-top::after {
+    content: "●  ●  ●";
+
+    position: absolute;
+
+    left: 22px;
+    top: 14px;
+
+    color: #687386;
+
+    font-size: 6px;
+    letter-spacing: 3px;
+
+    opacity: 0.65;
+}
+
+
+/* ---------------------------------------------------------
+   21. AI DEMO MESSAGE FLOAT
+--------------------------------------------------------- */
+
+.ai-demo-user,
+.ai-demo-bot {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.ai-demo-user:hover,
+.ai-demo-bot:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.16);
+}
+
+
+/* ---------------------------------------------------------
+   22. HOW-IT-WORKS CONNECTOR ANIMATION
+--------------------------------------------------------- */
+
+.how-connector::before {
+    background-size:
+        200% 100%;
+
+    animation:
+        connectorFlow 2.8s linear infinite;
+}
+
+@keyframes connectorFlow {
+    from {
+        background-position:
+            200% 0;
+    }
+
+    to {
+        background-position:
+            -20% 0;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   23. HOW CARDS ACTIVE LIGHT
+--------------------------------------------------------- */
+
+.how-card {
+    overflow: hidden;
+}
+
+.how-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(37,99,235,0.05),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition:
+        left 0.7s ease;
+}
+
+.how-card:hover::before {
+    left: 130%;
+}
+
+
+/* ---------------------------------------------------------
+   24. FINAL CTA BREATHING GLOW
+--------------------------------------------------------- */
+
+.home-final-cta::before,
+.home-final-cta::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(2px);
+}
+
+.home-final-cta::before {
+    width: 280px;
+    height: 280px;
+
+    left: -80px;
+    top: -90px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(37,99,235,0.2),
+            transparent 70%
+        );
+
+    animation:
+        ctaOrb 8s ease-in-out infinite;
+}
+
+.home-final-cta::after {
+    width: 310px;
+    height: 310px;
+
+    right: -100px;
+    bottom: -120px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(124,58,237,0.18),
+            transparent 70%
+        );
+
+    animation:
+        ctaOrb 9s -2s ease-in-out infinite;
+}
+
+@keyframes ctaOrb {
+    0%,
+    100% {
+        transform:
+            translate3d(0,0,0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate3d(25px,-20px,0)
+            scale(1.08);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   25. CTA TEXT FLOAT
+--------------------------------------------------------- */
+
+.cta-content {
+    animation:
+        ctaContentIn 1s ease both;
+}
+
+@keyframes ctaContentIn {
+    from {
+        opacity: 0;
+        transform:
+            translateY(20px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   26. FLOATING AI BUTTON
+--------------------------------------------------------- */
+
+.floating-ai-button {
+    animation:
+        floatingAi 3.8s ease-in-out infinite;
+}
+
+@keyframes floatingAi {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+.floating-ai-button:hover {
+    animation-play-state: paused;
+}
+
+
+/* ---------------------------------------------------------
+   27. AI BUTTON ROTATING RING
+--------------------------------------------------------- */
+
+.floating-ai-button::before {
+    content: "";
+
+    position: absolute;
+    inset: -5px;
+
+    border-radius: 21px;
+
+    border:
+        1px solid rgba(37,99,235,0.18);
+
+    animation:
+        aiRing 3s linear infinite;
+}
+
+@keyframes aiRing {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   28. AI PANEL OPEN FEEL
+--------------------------------------------------------- */
+
+.ai-panel {
+    transform-origin:
+        bottom right;
+}
+
+
+/* ---------------------------------------------------------
+   29. FOOTER LINK GLOW
+--------------------------------------------------------- */
+
+.home-footer button {
+    position: relative;
+}
+
+.home-footer button::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -3px;
+
+    width: 0;
+    height: 1px;
+
+    background: #ffffff;
+
+    transition:
+        width 0.25s ease;
+}
+
+.home-footer button:hover::after {
+    width: 100%;
+}
+
+
+/* ---------------------------------------------------------
+   30. SCROLLING FEEL
+--------------------------------------------------------- */
+
+.home-section,
+.ai-home-section,
+.home-final-cta {
+    scroll-margin-top: 80px;
+}
+
+
+/* ---------------------------------------------------------
+   31. MOBILE SAFETY
+--------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+    .hero-copy h1 span::after {
+        bottom: -4px;
+    }
+
+    .hero-image-frame {
+        transform: none;
+    }
+
+    .hero-image-frame:hover {
+        transform:
+            translateY(-3px);
+    }
+
+    .home-service-item:hover > * {
+        transform:
+            translateY(-5px);
+    }
+
+    .ai-home-section::before,
+    .ai-home-section::after,
+    .home-final-cta::before,
+    .home-final-cta::after {
+        opacity: 0.5;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   32. REDUCE MOTION
+--------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .home-page *,
+    .home-page *::before,
+    .home-page *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
