@@ -1,57 +1,148 @@
-import { useEffect, useState } from "react";
-import { getServices } from "./api";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./pages/Home";
+import Services from "./pages/Services";
+import SearchResults from "./pages/SearchResults";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Location from "./pages/Location";
+import HowItWorks from "./pages/HowItWorks";
+import About from "./pages/About";
+import Booking from "./pages/Booking";
+import Cart from "./pages/Cart";
+import MyBookings from "./pages/MyBookings";
+import ProviderDashboard from "./pages/ProviderDashboard";
+import AdminDashboard from "./pages/AdminDashboard";
+import Review from "./pages/Review";
+
+import ProtectedRoute from "./components/ProtectedRoute";
+
+import "./App.css";
 
 function App() {
-    const [services, setServices] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState("");
-
-    useEffect(() => {
-        getServices()
-            .then((data) => {
-                console.log("Services from backend:", data);
-                setServices(data);
-            })
-            .catch((err) => {
-                console.error(err);
-                setError(err.message);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    }, []);
-
     return (
-        <div>
-            <h1>ServiConnect</h1>
+        <BrowserRouter>
+            <Routes>
 
-            <h2>Backend Connection Test</h2>
+                {/* PUBLIC PAGES */}
 
-            {loading && <p>Loading services...</p>}
+                <Route
+                    path="/"
+                    element={<Home />}
+                />
 
-            {error && (
-                <p style={{ color: "red" }}>
-                    Error: {error}
-                </p>
-            )}
+                <Route
+                    path="/services"
+                    element={<Services />}
+                />
 
-            {!loading && !error && (
-                <div>
-                    <h3>Services</h3>
+                <Route
+                    path="/search"
+                    element={<SearchResults />}
+                />
 
-                    {services.length === 0 ? (
-                        <p>No services found.</p>
-                    ) : (
-                        services.map((service) => (
-                            <div key={service.id}>
-                                <h4>{service.name}</h4>
-                                <p>{service.description}</p>
-                            </div>
-                        ))
-                    )}
-                </div>
-            )}
-        </div>
+                <Route
+                    path="/login"
+                    element={<Login />}
+                />
+
+                <Route
+                    path="/register"
+                    element={<Register />}
+                />
+
+                <Route
+                    path="/location"
+                    element={<Location />}
+                />
+
+                <Route
+                    path="/how-it-works"
+                    element={<HowItWorks />}
+                />
+
+                <Route
+                    path="/about"
+                    element={<About />}
+                />
+
+                {/* CUSTOMER + ADMIN */}
+
+                <Route
+                    element={
+                        <ProtectedRoute
+                            allowedRoles={[
+                                "CUSTOMER",
+                                "ADMIN"
+                            ]}
+                        />
+                    }
+                >
+                    <Route
+                        path="/booking"
+                        element={<Booking />}
+                    />
+
+                    <Route
+                        path="/cart"
+                        element={<Cart />}
+                    />
+
+                    <Route
+                        path="/my-bookings"
+                        element={<MyBookings />}
+                    />
+
+                    <Route
+                        path="/review/:bookingId"
+                        element={<Review />}
+                    />
+                </Route>
+
+                {/* PROVIDER + ADMIN */}
+
+                <Route
+                    element={
+                        <ProtectedRoute
+                            allowedRoles={[
+                                "PROVIDER",
+                                "ADMIN"
+                            ]}
+                        />
+                    }
+                >
+                    <Route
+                        path="/provider-dashboard"
+                        element={<ProviderDashboard />}
+                    />
+                </Route>
+
+                {/* ADMIN */}
+
+                <Route
+                    element={
+                        <ProtectedRoute
+                            allowedRoles={[
+                                "ADMIN"
+                            ]}
+                        />
+                    }
+                >
+                    <Route
+                        path="/admin-dashboard"
+                        element={<AdminDashboard />}
+                    />
+                </Route>
+
+                {/* FALLBACK */}
+
+                <Route
+                    path="*"
+                    element={<Home />}
+                />
+
+            </Routes>
+        </BrowserRouter>
     );
 }
 

@@ -30,7 +30,7 @@ function Review() {
 
         try {
             const response = await fetch(
-                `http://localhost:8080/api/reviews/booking/${bookingId}`,
+                `https://serviconnect-backend-f1um.onrender.com/api/reviews/booking/${bookingId}`,
                 {
                     method: "POST",
                     headers: {

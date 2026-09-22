@@ -42,7 +42,7 @@ function AdminDashboard() {
                 const [bookingsResponse, providersResponse] =
                     await Promise.all([
                         fetch(
-                            "http://localhost:8080/api/bookings",
+                            "https://serviconnect-backend-f1um.onrender.com/api/bookings",
                             {
                                 headers: {
                                     Authorization:
@@ -52,7 +52,7 @@ function AdminDashboard() {
                         ),
 
                         fetch(
-                            "http://localhost:8080/api/providers",
+                            "https://serviconnect-backend-f1um.onrender.com/api/providers",
                             {
                                 headers: {
                                     Authorization:
@@ -178,7 +178,7 @@ function AdminDashboard() {
 
         try {
             const response = await fetch(
-                "http://localhost:8080/api/providers",
+                "https://serviconnect-backend-f1um.onrender.com/api/providers",
                 {
                     method: "POST",
                     headers: {
@@ -272,7 +272,7 @@ function AdminDashboard() {
             setError("");
 
             const response = await fetch(
-                `http://localhost:8080/api/bookings/${bookingId}/assign/${providerId}`,
+                `https://serviconnect-backend-f1um.onrender.com/api/bookings/${bookingId}/assign/${providerId}`,
                 {
                     method: "PUT",
                     headers: {

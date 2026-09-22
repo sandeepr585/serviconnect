@@ -21,7 +21,7 @@ function ProviderDashboard() {
         async function loadProviders() {
             try {
                 const response = await fetch(
-                    "http://localhost:8080/api/providers"
+                    "https://serviconnect-backend-f1um.onrender.com/api/providers"
                 );
 
                 const data = await response.json();
@@ -91,7 +91,7 @@ function ProviderDashboard() {
                 const [bookingsResponse, reviewsResponse] =
                     await Promise.all([
                         fetch(
-                            `http://localhost:8080/api/bookings/provider/${selectedProviderId}`,
+                            `https://serviconnect-backend-f1um.onrender.com/api/bookings/provider/${selectedProviderId}`,
                             {
                                 headers: {
                                     Authorization:
@@ -101,7 +101,7 @@ function ProviderDashboard() {
                         ),
 
                         fetch(
-                            `http://localhost:8080/api/reviews/provider/${selectedProviderId}`
+                            `https://serviconnect-backend-f1um.onrender.com/api/reviews/provider/${selectedProviderId}`
                         ),
                     ]);
 
@@ -187,7 +187,7 @@ function ProviderDashboard() {
             setError("");
 
             const response = await fetch(
-                `http://localhost:8080/api/bookings/${bookingId}/status?providerId=${selectedProviderId}&status=${status}`,
+                `https://serviconnect-backend-f1um.onrender.com/api/bookings/${bookingId}/status?providerId=${selectedProviderId}&status=${status}`,
                 {
                     method: "PUT",
                     headers: {

@@ -64,7 +64,7 @@ function Register() {
 
         try {
             const response = await fetch(
-                "http://localhost:8080/api/users/register",
+                "https://serviconnect-backend-f1um.onrender.com/api/users/register",
                 {
                     method: "POST",
                     headers: {

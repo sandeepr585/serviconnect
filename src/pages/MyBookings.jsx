@@ -23,7 +23,7 @@ function MyBookings() {
                 setError("");
 
                 const response = await fetch(
-                    "http://localhost:8080/api/bookings/my-bookings",
+                    "https://serviconnect-backend-f1um.onrender.com/api/bookings/my-bookings",
                     {
                         method: "GET",
                         headers: {

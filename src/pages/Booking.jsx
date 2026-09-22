@@ -182,7 +182,7 @@ function Booking() {
 
                     const response =
                         await fetch(
-                            `http://localhost:8080/api/services/${serviceId}`
+                            `https://serviconnect-backend-f1um.onrender.com/api/services/${serviceId}`
                         );
 
 
@@ -387,7 +387,7 @@ function Booking() {
 
                 const response =
                     await fetch(
-                        "http://localhost:8080/api/bookings",
+                        "https://serviconnect-backend-f1um.onrender.com/api/bookings",
                         {
                             method: "POST",
 
