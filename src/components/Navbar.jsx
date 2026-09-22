@@ -1,8 +1,6 @@
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useCart } from "../context/useCart";
 import { useAuth } from "../context/useAuth";
-
-
 
 function Navbar() {
 
@@ -15,42 +13,63 @@ function Navbar() {
         navigate("/");
     }
 
+    const navClass = ({ isActive }) =>
+        isActive ? "nav-active" : "";
+
     return (
         <nav className="navbar">
 
             <div className="navbar-brand">
-                <Link to="/">
+                <NavLink to="/">
                     ServiConnect
-                </Link>
+                </NavLink>
             </div>
 
             <div className="nav-links">
 
-                <Link to="/">
+                <NavLink
+                    to="/"
+                    className={navClass}
+                >
                     Home
-                </Link>
+                </NavLink>
 
-                <Link to="/services">
+                <NavLink
+                    to="/services"
+                    className={navClass}
+                >
                     Services
-                </Link>
+                </NavLink>
 
-                <Link to="/how-it-works">
+                <NavLink
+                    to="/how-it-works"
+                    className={navClass}
+                >
                     How It Works
-                </Link>
+                </NavLink>
 
-                <Link to="/about">
+                <NavLink
+                    to="/about"
+                    className={navClass}
+                >
                     About
-                </Link>
+                </NavLink>
 
-                <Link to="/cart">
+                <NavLink
+                    to="/cart"
+                    className={navClass}
+                >
                     Cart ({cartCount})
-                </Link>
+                </NavLink>
 
                 {isLoggedIn ? (
                     <>
-                        <Link to="/my-bookings">
+                        <NavLink
+                            to="/my-bookings"
+                            className={navClass}
+                        >
                             My Bookings
-                        </Link>
+                        </NavLink>
 
                         <span className="navbar-user">
                             Hi, {user?.name}
@@ -65,13 +84,19 @@ function Navbar() {
                     </>
                 ) : (
                     <>
-                        <Link to="/login">
+                        <NavLink
+                            to="/login"
+                            className={navClass}
+                        >
                             Login
-                        </Link>
+                        </NavLink>
 
-                        <Link to="/register">
+                        <NavLink
+                            to="/register"
+                            className={navClass}
+                        >
                             Register
-                        </Link>
+                        </NavLink>
                     </>
                 )}
 
