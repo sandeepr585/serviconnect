@@ -4223,3 +4223,482 @@ input:focus-visible {
         height: 470px;
     }
 }
+
+/* =========================================================
+   FINAL HOME HERO SIZE + MOBILE RESPONSIVE
+========================================================= */
+
+/* ---------- DESKTOP ---------- */
+
+@media (min-width: 1101px) {
+
+    .home-hero {
+        min-height: 570px;
+        padding: 48px 6% 58px;
+        gap: 42px;
+    }
+
+    .hero-copy {
+        max-width: 570px;
+    }
+
+    .hero-copy h1 {
+        font-size: 58px;
+        line-height: 0.98;
+        letter-spacing: -2.8px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
+    .hero-description {
+        max-width: 520px;
+        font-size: 15px;
+        line-height: 1.55;
+    }
+
+    .hero-search {
+        width: min(100%, 570px);
+        min-height: 58px;
+        margin-top: 21px;
+    }
+
+    .hero-search-button {
+        min-width: 104px;
+        min-height: 46px;
+    }
+
+    .hero-trust-row {
+        margin-top: 19px;
+    }
+
+    .hero-visual {
+        min-height: 460px;
+    }
+
+    .hero-image-frame {
+        width: min(100%, 470px);
+        height: 455px;
+        border-radius: 24px;
+    }
+
+    .hero-booking-card {
+        left: -12px;
+        top: 68px;
+        width: 190px;
+        padding: 13px;
+    }
+
+    .hero-rating-card {
+        right: -8px;
+        top: 155px;
+        min-width: 135px;
+        padding: 13px;
+    }
+
+    .hero-mini-card {
+        right: 10px;
+        bottom: 20px;
+        min-width: 145px;
+        padding: 12px;
+    }
+
+    .hero-location-pill {
+        left: 14px;
+        bottom: 14px;
+        padding: 7px 10px;
+        font-size: 10px;
+    }
+}
+
+
+/* ---------- TABLET ---------- */
+
+@media (min-width: 701px) and (max-width: 1100px) {
+
+    .home-hero {
+        min-height: auto;
+        padding: 65px 6%;
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .hero-copy {
+        max-width: 760px;
+    }
+
+    .hero-copy h1 {
+        font-size: 58px;
+        line-height: 1;
+        letter-spacing: -2.7px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .hero-search {
+        max-width: 600px;
+    }
+
+    .hero-visual {
+        min-height: 440px;
+    }
+
+    .hero-image-frame {
+        width: min(100%, 510px);
+        height: 430px;
+    }
+
+    .hero-booking-card {
+        left: 4%;
+        top: 55px;
+    }
+
+    .hero-rating-card {
+        right: 4%;
+        top: 130px;
+    }
+
+    .hero-mini-card {
+        right: 7%;
+        bottom: 20px;
+    }
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 700px) {
+
+    .home-hero {
+        min-height: auto;
+        padding: 42px 16px 52px;
+
+        grid-template-columns: 1fr;
+        gap: 34px;
+    }
+
+    /* Smaller main heading */
+
+    .hero-copy h1 {
+        margin-top: 15px;
+        margin-bottom: 16px;
+
+        font-size: 38px;
+        line-height: 1.02;
+        letter-spacing: -2px;
+    }
+
+    .hero-copy h1 span {
+        display: block;
+    }
+
+    /* Smaller paragraph */
+
+    .hero-description {
+        max-width: 100%;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* Smaller live badge */
+
+    .hero-live-badge {
+        padding: 7px 11px;
+        font-size: 11px;
+    }
+
+    /* Search becomes vertical */
+
+    .hero-search {
+        width: 100%;
+        min-height: auto;
+
+        margin-top: 20px;
+        padding: 6px;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 6px;
+
+        border-radius: 14px;
+    }
+
+    .hero-search-icon {
+        display: none;
+    }
+
+    .hero-search input {
+        width: 100%;
+        min-height: 46px;
+
+        padding: 0 11px;
+
+        font-size: 14px;
+    }
+
+    .search-clear {
+        position: absolute;
+        right: 9px;
+        top: 10px;
+    }
+
+    .hero-search-button {
+        width: 100%;
+        min-height: 44px;
+        border-radius: 11px;
+    }
+
+    /* Quick search */
+
+    .quick-search-row {
+        gap: 6px;
+        margin-top: 11px;
+    }
+
+    .quick-search-row > span {
+        width: 100%;
+        margin-bottom: 1px;
+    }
+
+    .quick-search-row button {
+        padding: 7px 10px;
+        font-size: 11px;
+    }
+
+    /* Trust section */
+
+    .hero-trust-row {
+        margin-top: 18px;
+        gap: 10px;
+    }
+
+    .hero-trust-row strong {
+        font-size: 12px;
+    }
+
+    .hero-trust-row small {
+        font-size: 10px;
+    }
+
+    .trust-avatars span {
+        width: 29px;
+        height: 29px;
+        font-size: 13px;
+    }
+
+    /* Hero visual */
+
+    .hero-visual {
+        min-height: 390px;
+        width: 100%;
+    }
+
+    .hero-image-frame {
+        width: 100%;
+        height: 365px;
+        border-radius: 20px;
+        transform: none;
+    }
+
+    .hero-image-frame:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Smaller floating cards */
+
+    .hero-booking-card {
+        left: 4px;
+        top: 35px;
+
+        width: 165px;
+        padding: 10px;
+
+        border-radius: 13px;
+    }
+
+    .float-card-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        font-size: 16px;
+    }
+
+    .hero-float-card strong {
+        font-size: 11px;
+    }
+
+    .hero-float-card small {
+        font-size: 9px;
+    }
+
+    .hero-rating-card {
+        right: 4px;
+        top: 105px;
+
+        min-width: 115px;
+        padding: 11px;
+
+        border-radius: 13px;
+    }
+
+    .hero-rating-card strong {
+        font-size: 20px;
+    }
+
+    .rating-stars {
+        font-size: 9px;
+        margin-bottom: 3px;
+    }
+
+    .hero-mini-card {
+        right: 8px;
+        bottom: 18px;
+
+        min-width: 128px;
+        padding: 10px;
+
+        border-radius: 12px;
+    }
+
+    .hero-mini-card > span {
+        width: 32px;
+        height: 32px;
+    }
+
+    .hero-mini-card strong {
+        font-size: 15px;
+    }
+
+    .hero-mini-card small {
+        font-size: 9px;
+    }
+
+    .hero-location-pill {
+        left: 10px;
+        bottom: 10px;
+
+        padding: 7px 9px;
+
+        font-size: 9px;
+    }
+}
+
+
+/* ---------- SMALL PHONES ---------- */
+
+@media (max-width: 480px) {
+
+    .home-hero {
+        padding:
+            34px 13px 45px;
+    }
+
+    .hero-copy h1 {
+        font-size: 32px;
+        line-height: 1.04;
+        letter-spacing: -1.7px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+        line-height: 1.55;
+    }
+
+    .hero-live-badge {
+        font-size: 10px;
+        padding: 6px 9px;
+    }
+
+    .hero-search {
+        margin-top: 17px;
+    }
+
+    .hero-search input {
+        font-size: 13px;
+    }
+
+    .hero-search-button {
+        min-height: 42px;
+        font-size: 12px;
+    }
+
+    .quick-search-row button {
+        padding: 6px 9px;
+        font-size: 10px;
+    }
+
+    .hero-visual {
+        min-height: 335px;
+    }
+
+    .hero-image-frame {
+        height: 315px;
+        border-radius: 17px;
+    }
+
+    .hero-booking-card {
+        width: 145px;
+        top: 25px;
+        padding: 8px;
+    }
+
+    .hero-rating-card {
+        top: 82px;
+        min-width: 100px;
+        padding: 8px;
+    }
+
+    .hero-rating-card strong {
+        font-size: 17px;
+    }
+
+    .hero-mini-card {
+        right: 5px;
+        bottom: 12px;
+
+        min-width: 112px;
+        padding: 8px;
+    }
+
+    .hero-location-pill {
+        left: 7px;
+        bottom: 7px;
+        font-size: 8px;
+    }
+}
+
+
+/* ---------- VERY SMALL PHONES ---------- */
+
+@media (max-width: 380px) {
+
+    .hero-copy h1 {
+        font-size: 29px;
+        letter-spacing: -1.4px;
+    }
+
+    .hero-description {
+        font-size: 12px;
+    }
+
+    .hero-image-frame {
+        height: 285px;
+    }
+
+    .hero-visual {
+        min-height: 305px;
+    }
+
+    .hero-booking-card {
+        width: 130px;
+    }
+
+    .hero-rating-card {
+        min-width: 92px;
+    }
+
+    .hero-mini-card {
+        min-width: 102px;
+    }
+}
