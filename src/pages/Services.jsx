@@ -4,41 +4,49 @@ import { getServices } from "../api";
 
 const SERVICE_IMAGES = {
     "Plumbing Service":
-        "https://loremflickr.com/800/500/plumber?lock=1",
+        "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=85",
 
     "Electrical Service":
-        "https://loremflickr.com/800/500/electrician?lock=2",
+        "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=85",
 
     "Home Cleaning":
-        "https://loremflickr.com/800/500/house,cleaning?lock=3",
+        "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=85",
 
     "AC Repair":
-        "https://loremflickr.com/800/500/airconditioner,repair?lock=4",
+        "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=85",
 
     "Painting Service":
-        "https://loremflickr.com/800/500/house,painter?lock=5",
+        "https://images.unsplash.com/photo-1562259949-e8e76848d782?auto=format&fit=crop&w=1200&q=85",
 
     "Carpentry Service":
-        "https://loremflickr.com/800/500/carpenter,woodwork?lock=6",
+        "https://images.unsplash.com/photo-1601058268499-e52658b8bb88?auto=format&fit=crop&w=1200&q=85",
 
     "Beauty Service":
-        "https://loremflickr.com/800/500/beauty,salon?lock=7",
+        "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=85",
 
     "Pest Control":
-        "https://loremflickr.com/800/500/pestcontrol?lock=8",
+        "https://images.unsplash.com/photo-1628260412297-a3377e45006f?auto=format&fit=crop&w=1200&q=85",
 
     "Washing Machine Repair":
-        "https://loremflickr.com/800/500/washingmachine,repair?lock=9",
+        "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=1200&q=85",
 
     "Refrigerator Repair":
-        "https://loremflickr.com/800/500/refrigerator,repair?lock=10",
+        "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=1200&q=85",
 
     "Bathroom Cleaning":
-        "https://loremflickr.com/800/500/bathroom,cleaning?lock=11",
+        "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=85",
 
     "AC Installation":
-        "https://loremflickr.com/800/500/airconditioner,installation?lock=12",
+        "https://images.unsplash.com/photo-1581092919535-7146ff9f9f7f?auto=format&fit=crop&w=1200&q=85",
 };
+
+function getServiceImage(service) {
+    return (
+        SERVICE_IMAGES[service?.title] ||
+        service?.image ||
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=85"
+    );
+}
 
 function Services() {
     const [services, setServices] = useState([]);
@@ -46,16 +54,30 @@ function Services() {
     const [error, setError] = useState("");
 
     useEffect(() => {
+        let active = true;
+
         getServices()
             .then((data) => {
-                setServices(data);
+                if (!active) return;
+
+                setServices(Array.isArray(data) ? data : []);
                 setLoading(false);
             })
             .catch((err) => {
                 console.error("Failed to load services:", err);
-                setError("Unable to load services. Please try again.");
+
+                if (!active) return;
+
+                setError(
+                    "Unable to load services. Please try again."
+                );
+
                 setLoading(false);
             });
+
+        return () => {
+            active = false;
+        };
     }, []);
 
     if (loading) {
@@ -66,7 +88,9 @@ function Services() {
                         ServiConnect Services
                     </span>
 
-                    <h1>Services for your everyday needs</h1>
+                    <h1>
+                        Services for your everyday needs
+                    </h1>
 
                     <p>
                         Book trusted professionals for home repair,
@@ -89,7 +113,9 @@ function Services() {
                         ServiConnect Services
                     </span>
 
-                    <h1>Services for your everyday needs</h1>
+                    <h1>
+                        Services for your everyday needs
+                    </h1>
 
                     <p>
                         Book trusted professionals for home repair,
@@ -111,7 +137,9 @@ function Services() {
                     ServiConnect Services
                 </span>
 
-                <h1>Services for your everyday needs</h1>
+                <h1>
+                    Services for your everyday needs
+                </h1>
 
                 <p>
                     Book trusted professionals for home repair,
@@ -124,10 +152,7 @@ function Services() {
                     <ServiceCard
                         key={service.id}
                         id={service.id}
-                        image={
-                            SERVICE_IMAGES[service.title] ||
-                            "https://loremflickr.com/800/500/home,service?lock=20"
-                        }
+                        image={getServiceImage(service)}
                         title={service.title}
                         description={service.description}
                         price={service.price}
