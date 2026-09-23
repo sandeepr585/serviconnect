@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/useCart";
 
+
 function ServiceCard({
     id,
     image,
+    fallbackImage,
     title,
     description,
     price,
@@ -15,29 +17,89 @@ function ServiceCard({
     const { addToCart } = useCart();
 
 
+    /*
+    BOOK NOW
+    */
+
     function handleBookNow() {
 
-        navigate(`/booking?serviceId=${id}`);
+        navigate(
+            `/booking?serviceId=${id}`
+        );
+
     }
 
+
+    /*
+    ADD TO CART
+    */
 
     function handleAddToCart() {
 
         addToCart({
+
             id,
+
             title,
+
             description,
+
             price,
+
             rating,
+
             image
+
         });
+
     }
 
 
+    /*
+    IMAGE ERROR
+    */
+
     function handleImageError(event) {
 
+        /*
+        Prevent infinite onError loop
+        */
+
+        if (
+            event.currentTarget.dataset.fallbackUsed ===
+            "true"
+        ) {
+
+            return;
+
+        }
+
+
+        event.currentTarget.dataset.fallbackUsed =
+            "true";
+
+
+        /*
+        Use service-specific fallback
+        */
+
+        if (fallbackImage) {
+
+            event.currentTarget.src =
+                fallbackImage;
+
+            return;
+
+        }
+
+
+        /*
+        Final generic fallback
+        */
+
         event.currentTarget.src =
-            "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1000&q=80";
+            "https://loremflickr.com/900/600/home,service?lock=999";
+
     }
 
 
@@ -46,7 +108,9 @@ function ServiceCard({
         <div className="service-card">
 
 
-            {/* SERVICE IMAGE */}
+            {/* =========================================
+                IMAGE
+            ========================================== */}
 
             <div className="service-image-container">
 
@@ -61,12 +125,16 @@ function ServiceCard({
             </div>
 
 
-            {/* SERVICE CONTENT */}
+            {/* =========================================
+                CONTENT
+            ========================================== */}
 
             <div className="service-card-content">
 
 
-                {/* RATING */}
+                {/* =====================================
+                    RATING
+                ====================================== */}
 
                 <div className="service-rating">
 
@@ -75,7 +143,9 @@ function ServiceCard({
                 </div>
 
 
-                {/* TITLE */}
+                {/* =====================================
+                    TITLE
+                ====================================== */}
 
                 <h2>
 
@@ -84,7 +154,9 @@ function ServiceCard({
                 </h2>
 
 
-                {/* DESCRIPTION */}
+                {/* =====================================
+                    DESCRIPTION
+                ====================================== */}
 
                 <p className="service-description">
 
@@ -93,26 +165,26 @@ function ServiceCard({
                 </p>
 
 
-                {/* PRICE */}
+                {/* =====================================
+                    PRICE
+                ====================================== */}
 
                 <div className="service-price">
 
                     <span>
-
                         Starting from
-
                     </span>
 
                     <strong>
-
                         ₹{price}
-
                     </strong>
 
                 </div>
 
 
-                {/* BUTTONS */}
+                {/* =====================================
+                    ACTION BUTTONS
+                ====================================== */}
 
                 <div className="service-actions">
 
@@ -140,15 +212,14 @@ function ServiceCard({
 
                     </button>
 
-
                 </div>
-
 
             </div>
 
         </div>
 
     );
+
 }
 
 
