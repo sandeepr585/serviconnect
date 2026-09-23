@@ -19,10 +19,10 @@ const SERVICE_IMAGES = {
         "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=85",
 
     "ac repair":
-        "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=85",
+        "https://images.pexels.com/photos/5463580/pexels-photo-5463580.jpeg?auto=compress&dpr=1&h=750&w=1260",
 
     "painting service":
-        "https://images.unsplash.com/photo-1562259949-e8e76848d782?auto=format&fit=crop&w=1200&q=85",
+        "https://images.pexels.com/photos/1917849/pexels-photo-1917849.jpeg?auto=compress&dpr=1&h=750&w=1260",
 
     "carpentry service":
         "https://images.unsplash.com/photo-1601058268499-e52658b8bb88?auto=format&fit=crop&w=1200&q=85",
@@ -43,7 +43,7 @@ const SERVICE_IMAGES = {
         "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=85",
 
     "ac installation":
-        "https://images.unsplash.com/photo-1581092919535-7146ff9f9f7f?auto=format&fit=crop&w=1200&q=85",
+        "https://images.pexels.com/photos/16592625/pexels-photo-16592625/free-photo-of-air-conditioner-in-a-house.jpeg?auto=compress&dpr=1&h=750&w=1260",
 };
 
 
